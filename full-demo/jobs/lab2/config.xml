@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.20">
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.49">
+    <script>pipeline {
+    agent any
+    tools {
+       gradle &apos;gradle-3.4&apos;
+    }
+    stages {
+        stage(&apos;Source&apos;) {
+             steps {
+
+                        git branch:&apos;demo&apos;, url:&apos;http://github.com/brentlaster/greetings&apos;
+
+         }
+        }
+        stage(&apos;Build&apos;) {
+            steps {
+                 sh &apos;/usr/share/gradle-3.4/bin/gradle clean build&apos;
+            }
+        }
+    }
+}
+</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

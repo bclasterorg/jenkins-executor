@@ -5,10 +5,10 @@ services:
     build:
       context: .
       target: jenkins-master
-    image: ericsmalling/jenkins-master 
+    image: bclaster/jenkins-master 
 
   agent:
     build:
       context: .
       target: jenkins-agent
-    image: ericsmalling/jenkins-agent
+    image: bclaster/jenkins-agent
