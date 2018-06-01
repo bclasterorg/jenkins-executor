@@ -3,7 +3,7 @@ version: '3.3'
 
 services:
   master:
-    image: ericsmalling/jenkins-master
+    image: bclaster/jenkins-master
     ports:
       - 8080:8080
     deploy:
@@ -11,11 +11,6 @@ services:
       #   constraints:
       #     - node.labels.jenkins == master
       replicas: 1
-      resources:
-        limits:
-          memory: 2G
-        reservations:
-          memory: 2G
       restart_policy:
         condition: on-failure
     volumes:
@@ -27,7 +22,7 @@ services:
       - jenkins_password
 
   agent:
-    image: ericsmalling/jenkins-agent
+    image: bclaster/jenkins-agent
     environment:
       - "MASTER_HOST=master"
       - "MASTER_JNLP_PORT=50000"
@@ -37,11 +32,6 @@ services:
       # placement:
       #   constraints:
       #     - node.labels.jenkins == agent
-      resources:
-        limits:
-          memory: 1G
-        reservations:
-          memory: 1G
       restart_policy:
         condition: on-failure
     secrets:

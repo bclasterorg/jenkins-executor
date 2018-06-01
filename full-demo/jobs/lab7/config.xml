@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.20">
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.49">
+    <script>node {
+        stage(&apos;runApp&apos;) {
+           withCredentials([usernamePassword(credentialsId: &apos;mysql-admin&apos;, passwordVariable: &apos;mysqlAdminPass&apos;, usernameVariable: &apos;mysqlAdminUser&apos;), usernamePassword(credentialsId: &apos;mysql-root&apos;, passwordVariable: &apos;mysqlRootPass&apos;, usernameVariable: &apos;&apos;)]) {
+              {
+                db -&gt;
+                   {
+                      web -&gt;
+
+                     timeout(2) {
+                        input &apos;Pausing&apos;
+                     }
+                    }
+            }
+        }
+    }
+}
+
+def containerInfo(container) {
+
+}
+
+</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.20">
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.49">
+    <script>node() {
+    stage(&apos;Build Image&apos;) {
+        // download the Dockerfile to build from
+        git &apos;http://github.com/brentlaster/docker-gradle.git&apos;
+
+        // copy over our gradle distribution for the build context
+
+        // build our docker image
+
+
+        // push it back into the local registry
+    }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

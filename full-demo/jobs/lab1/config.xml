@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.20">
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.49">
+    <script>node (&apos; &apos;) {
+   def gradleHome
+   stage(&apos;Source&apos;) { // for display purposes
+          // Get some code from our Git repository
+          git branch:&apos;demo&apos;, url:&apos;http://github.com/brentlaster/greetings&apos;
+
+   }
+   stage(&apos;Build&apos;) {
+          // Run the gradle build
+          gradleHome = tool &apos;gradle-3.4&apos;
+          sh &quot;&apos;${gradleHome}/bin/gradle&apos;  clean  build&quot;
+   }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
