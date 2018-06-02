@@ -17,7 +17,7 @@ RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 # Add job definitions
 RUN mkdir -p /usr/share/jenkins/ref/jobs
 COPY jobs/ /usr/share/jenkins/ref/jobs/
-RUN chown -R jenkins:jenkins /usr/share/jenkins/ref/jobs
+#RUN chown -R jenkins:jenkins /usr/share/jenkins/ref/jobs
 
  
 
